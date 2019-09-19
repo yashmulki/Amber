@@ -17,7 +17,7 @@ AmberState *amberGet() {
 }
 
 void amberMain() {
-  while (1) {
-    *((uint8_t*)0xB8000 + 1) = 'Q';
-  }
+  amberInitState(amberGet());
+
+  puts("Hello World!\nReally long text lol gets long wow it's getting longer and longer and longer.");
 }

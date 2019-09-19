@@ -19,11 +19,21 @@ uint64_t strlen(const char *text) {
 static void putCharacter(char c) {
   AmberState *amber = amberGet();
 
+  if (c == '\n') {
+    amber->terminal.column = 0;
+    amber->terminal.row++;
+  }
+
   terminalBuffer[amber->terminal.row * terminalWidth + amber->terminal.column] =
     terminalColor << 8 | c;
+
+  if (c != '\n')
+    amber->terminal.column++;
+  if (amber->terminal.column == terminalWidth)
+    amber->terminal.row++;
   
-  amber->terminal.row %= terminalHeight;
   amber->terminal.column %= terminalWidth;
+  amber->terminal.row %= terminalHeight;
 }
 
 void puts(const char *text) {

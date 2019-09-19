@@ -1,7 +1,7 @@
 #ifndef AMBER_PRINT_H
 #define AMBER_PRINT_H
 
-#define MAKE_TERMINAL_COLOR(foreground, background) foreground << 4 | background
+#define MAKE_TERMINAL_COLOR(foreground, background) background << 4 | foreground
 
 enum PrintColor {
   PrintColorBlack,
