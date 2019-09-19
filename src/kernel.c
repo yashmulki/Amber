@@ -17,7 +17,7 @@ AmberState *amberGet() {
 }
 
 void amberMain() {
-  amberInitState(&state);
-
-  puts("Hello World.");
+  while (1) {
+    *((uint8_t*)0xB8000 + 1) = 'Q';
+  }
 }
